@@ -16,3 +16,11 @@ def list_all_files(rootdir,exten):
         if file.endswith(exten):
             file_add.append(file)
     return file_add
+
+class FileScanner(object):
+    # 根据需要更改
+    @staticmethod
+    def scan(_dir, file_type='tck'):
+        filenames = glob.glob(_dir + '*.' + str(file_type))
+        
+        return {filename.split('/')[-1].split('.')[0]: filename for filename in filenames}
